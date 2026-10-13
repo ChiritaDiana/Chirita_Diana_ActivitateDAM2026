@@ -24,3 +24,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Chirita_Diana_ActivitateDAM2026"
 include(":s02")
+include(":s03")
