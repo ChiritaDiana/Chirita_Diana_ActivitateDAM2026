@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">s04_exercitiu</string>
+    <string name="t_rex">T-Rex</string>
+    <string name="adauga">Adauga</string>
+    <string name="exemplu_t_rex">Exemplu: T-Rex</string>
+    <string name="este_carnivor">Este carnivor?</string>
+    <string name="adauga_dinozaur">Adauga dinozaur</string>
+
+    <string-array name="spinner_dinozauri">
+        <item>Carnivor</item>
+        <item>Ierbivor</item>
+        <item>Omnivor</item>
+    </string-array>
+</resources>
