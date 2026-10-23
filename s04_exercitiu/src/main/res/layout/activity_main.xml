@@ -16,4 +16,12 @@
         android:text="@string/adauga_dinozaur"
         />
 
+    <TextView
+        android:id="@+id/tvRezultat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:padding="16dp"
+        android:textSize="16sp" />
+
 </LinearLayout>

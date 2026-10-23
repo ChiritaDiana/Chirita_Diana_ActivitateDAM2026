@@ -5,10 +5,19 @@
     <string name="exemplu_t_rex">Exemplu: T-Rex</string>
     <string name="este_carnivor">Este carnivor?</string>
     <string name="adauga_dinozaur">Adauga dinozaur</string>
+    <string name="a_fost_descoperit_recent">A fost descoperit recent?</string>
+    <string name="terestru">Terestru</string>
+    <string name="acvatic">Acvatic</string>
+    <string name="aerian">Aerian</string>
+    <string name="eroare_nume">Introdu un nume</string>
+    <string name="titlu_adauga">Adaugă un dinozaur nou!</string>
+    <string name="habitat">Habitat</string>
+    <string name="perioada">Perioada</string>
+    <string name="periculozitate">Periculozitate</string>
 
-    <string-array name="spinner_dinozauri">
-        <item>Carnivor</item>
-        <item>Ierbivor</item>
-        <item>Omnivor</item>
+    <string-array name="perioade_dinozauri">
+        <item>Triasic</item>
+        <item>Jurasic</item>
+        <item>Cretacic</item>
     </string-array>
 </resources>

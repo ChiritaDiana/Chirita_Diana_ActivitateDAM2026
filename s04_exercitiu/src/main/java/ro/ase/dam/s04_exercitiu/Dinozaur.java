@@ -1,23 +1,33 @@
 package ro.ase.dam.s04_exercitiu;
 
-public class Dinozaur {
-    private String nume;
-    private int varsta;
-    private String specie;
+import java.io.Serializable;
 
-    public Dinozaur(String nume, int varsta, String specie) {
+public class Dinozaur implements Serializable {
+    private String nume;
+    private String perioada;      // Spinner
+    private String habitat;       // RadioButton
+    private boolean carnivor;     // CheckBox
+    private float periculozitate; // RatingBar
+    private boolean descoperitRecent; // Switch
+
+    public Dinozaur(String nume, String perioada, String habitat,
+                    boolean carnivor, float periculozitate, boolean descoperitRecent) {
         this.nume = nume;
-        this.varsta = varsta;
-        this.specie = specie;
+        this.perioada = perioada;
+        this.habitat = habitat;
+        this.carnivor = carnivor;
+        this.periculozitate = periculozitate;
+        this.descoperitRecent = descoperitRecent;
     }
 
     @Override
     public String toString() {
-        return "Dinozaur{" +
-                "nume='" + nume + '\'' +
-                ", varsta=" + varsta +
-                ", specie='" + specie + '\'' +
-                '}';
+        return "Dinozaur: " + nume + "\n" +
+                "Perioada: " + perioada + "\n" +
+                "Habitat: " + habitat + "\n" +
+                "Carnivor: " + (carnivor ? "da" : "nu") + "\n" +
+                "Periculozitate: " + periculozitate + " / 5\n" +
+                "Descoperit recent: " + (descoperitRecent ? "da" : "nu");
     }
 
     public String getNume() {
@@ -28,20 +38,44 @@ public class Dinozaur {
         this.nume = nume;
     }
 
-    public int getVarsta() {
-        return varsta;
+    public String getPerioada() {
+        return perioada;
     }
 
-    public void setVarsta(int varsta) {
-        this.varsta = varsta;
+    public void setPerioada(String perioada) {
+        this.perioada = perioada;
     }
 
-    public String getSpecie() {
-        return specie;
+    public String getHabitat() {
+        return habitat;
     }
 
-    public void setSpecie(String specie) {
-        this.specie = specie;
+    public void setHabitat(String habitat) {
+        this.habitat = habitat;
+    }
+
+    public boolean isCarnivor() {
+        return carnivor;
+    }
+
+    public void setCarnivor(boolean carnivor) {
+        this.carnivor = carnivor;
+    }
+
+    public float getPericulozitate() {
+        return periculozitate;
+    }
+
+    public void setPericulozitate(float periculozitate) {
+        this.periculozitate = periculozitate;
+    }
+
+    public boolean isDescoperitRecent() {
+        return descoperitRecent;
+    }
+
+    public void setDescoperitRecent(boolean descoperitRecent) {
+        this.descoperitRecent = descoperitRecent;
     }
 }
 

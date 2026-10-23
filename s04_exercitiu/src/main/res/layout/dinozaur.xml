@@ -15,40 +15,69 @@
         />
 
     <EditText
+        android:id="@+id/etNume"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/exemplu_t_rex"
         />
 
     <CheckBox
+        android:id="@+id/cbCarnivor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/este_carnivor"
 
         />
 
-    <!--    <RadioButton-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        />-->
-
-    <Spinner
+    <RadioGroup
+        android:id="@+id/rgHabitat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:entries="spinner_dinozauri"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/rbTerestru"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/terestru"
+            android:checked="true"
+            />
+        <RadioButton
+            android:id="@+id/rbAcvatic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/acvatic"
+            />
+        <RadioButton
+            android:id="@+id/rbAerian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/aerian"
+            />
+        </RadioGroup>
+
+
+    <Spinner
+        android:id="@+id/spPerioada"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/perioade_dinozauri"
         />
 
     <RatingBar
+        android:id="@+id/rbPericol"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         />
 
     <Switch
-        android:layout_width="match_parent"
+        android:id="@+id/swDescoperitRecent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/a_fost_descoperit_recent"
         />
 
     <Button
+        android:id="@+id/btnAdauga"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/adauga"
