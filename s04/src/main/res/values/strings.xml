@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">s04</string>
+    <string name="apasa">Apasa</string>
+    <string name="exemplu_ion">Exemplu:Ion</string>
+    <string name="seminar_nou">seminar_nou</string>
+
+    <string name="Nume">Nume</string>
+    <string name="exemplu_t_rex">Exemplu:T-Rex</string>
+    <string name="este_carnivor">Este carnivor?</string>
+    <string name="adauga">Adauga</string>
+
+    <string-array name="spinner_dinozauri">
+        <item>Carnivor</item>
+        <item>Ierbivor</item>
+        <item>Omnivor</item>
+    </string-array>
+</resources>
