@@ -14,6 +14,7 @@
     <string name="habitat">Habitat</string>
     <string name="perioada">Perioada</string>
     <string name="periculozitate">Periculozitate</string>
+    <string name="afiseaza_lista_dinozauri">Afiseaza lista dinozauri</string>
 
     <string-array name="perioade_dinozauri">
         <item>Triasic</item>

@@ -22,6 +22,9 @@
         <activity
             android:name=".AdaugaDinozaur"
             android:exported="false" />
+        <activity
+            android:name=".ListaDinozauri"
+            android:exported="false" />
     </application>
 
 </manifest>

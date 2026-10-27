@@ -16,6 +16,14 @@
         android:text="@string/adauga_dinozaur"
         />
 
+
+
+    <Button
+        android:id="@+id/btnAfiseazaLista"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/afiseaza_lista_dinozauri" />
+
     <TextView
         android:id="@+id/tvRezultat"
         android:layout_width="match_parent"
