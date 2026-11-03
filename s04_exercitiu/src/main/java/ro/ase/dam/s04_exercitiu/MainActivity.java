@@ -11,6 +11,7 @@ import androidx.activity.EdgeToEdge;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.IntentCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -40,8 +41,8 @@ public class MainActivity extends AppCompatActivity {
             new ActivityResultContracts.StartActivityForResult(),
             result -> {
                 if (result.getResultCode() == RESULT_OK && result.getData() != null) {
-                    Dinozaur dino = (Dinozaur) result.getData()
-                            .getSerializableExtra(AdaugaDinozaur.EXTRA_DINOZAUR);
+                    Dinozaur dino = IntentCompat.getParcelableExtra(result.getData(), AdaugaDinozaur.EXTRA_DINOZAUR, Dinozaur.class);
+
                     if (dino != null) {
                         listaDinozauri.add(dino);
                         Toast.makeText(this, dino.toString(), Toast.LENGTH_LONG).show();
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
             new ActivityResultContracts.StartActivityForResult(),
             result -> {
                 if (result.getResultCode() == RESULT_OK && result.getData() != null) {
-                    ArrayList<Dinozaur> listaActualizata = (ArrayList<Dinozaur>) result.getData().getSerializableExtra(ListaDinozauri.EXTRA_LISTA);
+                    ArrayList<Dinozaur> listaActualizata = IntentCompat.getParcelableArrayListExtra(result.getData(), ListaDinozauri.EXTRA_LISTA, Dinozaur.class);
 
                     if(listaActualizata != null){
                         listaDinozauri.clear();
@@ -83,8 +84,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, ListaDinozauri.class);
-                intent.putExtra(ListaDinozauri.EXTRA_LISTA, listaDinozauri);
-                listaLauncher.launch(intent);
+                intent.putParcelableArrayListExtra(ListaDinozauri.EXTRA_LISTA, listaDinozauri);                listaLauncher.launch(intent);
             }
         });
     }

@@ -16,13 +16,14 @@ import android.widget.CompoundButton;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.IntentCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class AdaugaDinozaur extends AppCompatActivity {
 
-    public static final String EXTRA_DINOZAUR = "dinozaur";
+    public static final String EXTRA_DINOZAUR = "EXTRA_DINOZAUR";
     private EditText etNume;
     private CheckBox cbCarnivor;
     private RadioGroup rgHabitat;
@@ -44,6 +45,8 @@ public class AdaugaDinozaur extends AppCompatActivity {
             return insets;
         });
 
+        Dinozaur dinozaurPrimit = IntentCompat.getParcelableExtra(getIntent(), EXTRA_DINOZAUR, Dinozaur.class);
+
         etNume = findViewById(R.id.etNume);
         cbCarnivor = findViewById(R.id.cbCarnivor);
         rgHabitat = findViewById(R.id.rgHabitat);
@@ -52,6 +55,25 @@ public class AdaugaDinozaur extends AppCompatActivity {
         swDescoperitRecent = findViewById(R.id.swDescoperitRecent);
         btnAdauga = findViewById(R.id.btnAdauga);
 
+        if (dinozaurPrimit != null) {
+            etNume.setText(dinozaurPrimit.getNume());
+            cbCarnivor.setChecked(dinozaurPrimit.isCarnivor());
+            rbPericol.setRating(dinozaurPrimit.getPericulozitate());
+            swDescoperitRecent.setChecked(dinozaurPrimit.isDescoperitRecent());
+
+            for (int i = 0; i < spPerioada.getCount(); i++) {
+                if (spPerioada.getItemAtPosition(i).toString().equals(dinozaurPrimit.getPerioada())) {
+                    spPerioada.setSelection(i);
+                    break;
+                }
+            }
+            for (int i = 0; i < rgHabitat.getChildCount(); i++) {
+                RadioButton rb = (RadioButton) rgHabitat.getChildAt(i);
+                if (rb.getText().toString().equals(dinozaurPrimit.getHabitat())) {
+                    rb.setChecked(true);
+                }
+            }
+        }
 
         btnAdauga.setOnClickListener(v -> {
             String nume = etNume.getText().toString().trim();

@@ -1,8 +1,11 @@
 package ro.ase.dam.s04_exercitiu;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.io.Serializable;
 
-public class Dinozaur implements Serializable {
+public class Dinozaur implements Parcelable {
     private String nume;
     private String perioada;      // Spinner
     private String habitat;       // RadioButton
@@ -19,6 +22,42 @@ public class Dinozaur implements Serializable {
         this.periculozitate = periculozitate;
         this.descoperitRecent = descoperitRecent;
     }
+
+    protected Dinozaur(Parcel in) {
+        nume = in.readString();
+        perioada = in.readString();
+        habitat = in.readString();
+        carnivor = in.readByte() != 0;
+        periculozitate = in.readFloat();
+        descoperitRecent = in.readByte() != 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(nume);
+        dest.writeString(perioada);
+        dest.writeString(habitat);
+        dest.writeByte((byte) (carnivor ? 1 : 0));
+        dest.writeFloat(periculozitate);
+        dest.writeByte((byte) (descoperitRecent ? 1 : 0));
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Dinozaur> CREATOR = new Creator<Dinozaur>() {
+        @Override
+        public Dinozaur createFromParcel(Parcel in) {
+            return new Dinozaur(in);
+        }
+
+        @Override
+        public Dinozaur[] newArray(int size) {
+            return new Dinozaur[size];
+        }
+    };
 
     @Override
     public String toString() {
@@ -79,6 +118,3 @@ public class Dinozaur implements Serializable {
     }
 }
 
-//5. mergem in layout si dam new resource file. "activitate AI"
-//adaugam cod cu AI
-//in MainActivity avem setContentView si modificam si punem "activitate AI"
