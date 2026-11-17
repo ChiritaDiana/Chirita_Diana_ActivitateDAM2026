@@ -24,12 +24,18 @@
         android:layout_height="wrap_content"
         android:text="@string/afiseaza_lista_dinozauri" />
 
-    <TextView
-        android:id="@+id/tvRezultat"
-        android:layout_width="match_parent"
+<!--    <TextView-->
+<!--        android:id="@+id/tvRezultat"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="24dp"-->
+<!--        android:padding="16dp"-->
+<!--        android:textSize="16sp" />-->
+
+    <Button
+        android:id="@+id/btnImaginiDinozauri"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:padding="16dp"
-        android:textSize="16sp" />
+        android:text= "@string/imagini_dinozauri" />
 
 </LinearLayout>

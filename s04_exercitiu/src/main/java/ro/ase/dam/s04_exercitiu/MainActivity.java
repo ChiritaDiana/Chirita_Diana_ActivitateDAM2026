@@ -21,47 +21,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     private final ArrayList<Dinozaur> listaDinozauri = new ArrayList<>();
-
     private TextView tvRezultat;
-
-//    private final ActivityResultLauncher<Intent> launcher = registerForActivityResult(
-//            new ActivityResultContracts.StartActivityForResult(),
-//            result -> {
-//                if (result.getResultCode() == RESULT_OK && result.getData() != null) {
-//                    Dinozaur dino = (Dinozaur) result.getData()
-//                            .getSerializableExtra(AdaugaDinozaur.EXTRA_DINOZAUR);
-//                    if (dino != null) {
-//                        tvRezultat.setText(dino.toString());
-//                        Toast.makeText(this, dino.toString(), Toast.LENGTH_LONG).show();
-//                    }
-//                }
-//            });
-
-    private final ActivityResultLauncher<Intent> adaugaLauncher = registerForActivityResult(
-            new ActivityResultContracts.StartActivityForResult(),
-            result -> {
-                if (result.getResultCode() == RESULT_OK && result.getData() != null) {
-                    Dinozaur dino = IntentCompat.getParcelableExtra(result.getData(), AdaugaDinozaur.EXTRA_DINOZAUR, Dinozaur.class);
-
-                    if (dino != null) {
-                        listaDinozauri.add(dino);
-                        Toast.makeText(this, dino.toString(), Toast.LENGTH_LONG).show();
-                    }
-                }
-            });
-
-    private final ActivityResultLauncher<Intent> listaLauncher = registerForActivityResult(
-            new ActivityResultContracts.StartActivityForResult(),
-            result -> {
-                if (result.getResultCode() == RESULT_OK && result.getData() != null) {
-                    ArrayList<Dinozaur> listaActualizata = IntentCompat.getParcelableArrayListExtra(result.getData(), ListaDinozauri.EXTRA_LISTA, Dinozaur.class);
-
-                    if(listaActualizata != null){
-                        listaDinozauri.clear();
-                        listaDinozauri.addAll(listaActualizata);
-                    }
-                }
-            });
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,18 +34,58 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        tvRezultat = findViewById(R.id.tvRezultat);
-        Button btnAdauga = findViewById(R.id.btnAdaugaDino);
-        btnAdauga.setOnClickListener(v ->
-                adaugaLauncher.launch(new Intent(this, AdaugaDinozaur.class)));
+//        tvRezultat = findViewById(R.id.tvRezultat);
+//        Button btnAdauga = findViewById(R.id.btnAdaugaDino);
+//        btnAdauga.setOnClickListener(v ->
+//                adaugaLauncher.launch(new Intent(this, AdaugaDinozaur.class)));
+
+        Button btnAdaugaDino = findViewById(R.id.btnAdaugaDino);
+        btnAdaugaDino.setOnClickListener(v->{
+            Intent intent = new Intent(MainActivity.this, AdaugaDinozaur.class);
+            adaugaLauncher.launch(intent);
+        });
+
+        Button btnAfiseazaLista = findViewById(R.id.btnAfiseazaLista);
+        btnAfiseazaLista.setOnClickListener(v->{
+            Intent intent = new Intent(MainActivity.this, ListaDinozauri.class);
+            intent.putParcelableArrayListExtra("lista", listaDinozauri);                listaLauncher.launch(intent);
+            listaLauncher.launch(intent);
+        });
 
 
-        findViewById(R.id.btnAfiseazaLista).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ListaDinozauri.class);
-                intent.putParcelableArrayListExtra(ListaDinozauri.EXTRA_LISTA, listaDinozauri);                listaLauncher.launch(intent);
-            }
+        Button btnImaginiDinozauri = findViewById(R.id.btnImaginiDinozauri);
+        btnImaginiDinozauri.setOnClickListener(v->{
+            Intent intent = new Intent(this, ActivitateImagini.class);
+            startActivity(intent);
         });
     }
+
+
+    private final ActivityResultLauncher<Intent> adaugaLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                    Dinozaur dino = IntentCompat.getParcelableExtra(result.getData(), "dinozaur", Dinozaur.class);
+
+                    if (dino != null) {
+                        listaDinozauri.add(dino);
+                        Toast.makeText(this, dino.toString(), Toast.LENGTH_LONG).show();
+                    }
+                }
+            });
+
+    private final ActivityResultLauncher<Intent> listaLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                    ArrayList<Dinozaur> listaActualizata = IntentCompat.getParcelableArrayListExtra(result.getData(), "lista", Dinozaur.class);
+
+                    if(listaActualizata != null){
+                        listaDinozauri.clear();
+                        listaDinozauri.addAll(listaActualizata);
+                    }
+                }
+            });
+
+
 }

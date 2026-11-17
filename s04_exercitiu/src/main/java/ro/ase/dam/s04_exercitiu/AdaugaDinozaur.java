@@ -22,8 +22,6 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class AdaugaDinozaur extends AppCompatActivity {
-
-    public static final String EXTRA_DINOZAUR = "EXTRA_DINOZAUR";
     private EditText etNume;
     private CheckBox cbCarnivor;
     private RadioGroup rgHabitat;
@@ -45,7 +43,7 @@ public class AdaugaDinozaur extends AppCompatActivity {
             return insets;
         });
 
-        Dinozaur dinozaurPrimit = IntentCompat.getParcelableExtra(getIntent(), EXTRA_DINOZAUR, Dinozaur.class);
+        Dinozaur dinozaurPrimit = IntentCompat.getParcelableExtra(getIntent(), "dinozaur", Dinozaur.class);
 
         etNume = findViewById(R.id.etNume);
         cbCarnivor = findViewById(R.id.cbCarnivor);
@@ -91,7 +89,7 @@ public class AdaugaDinozaur extends AppCompatActivity {
                     swDescoperitRecent.isChecked());
 
             Intent rezultat = new Intent();
-            rezultat.putExtra(EXTRA_DINOZAUR, dino);
+            rezultat.putExtra("dinozaur", dino);
             setResult(RESULT_OK, rezultat);
             finish();
         });
